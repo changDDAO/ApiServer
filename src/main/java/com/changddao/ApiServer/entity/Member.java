@@ -24,6 +24,9 @@ public class Member extends BaseTimeEntity {
     @Embedded
     private Info info;
 
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
     public void setTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
