@@ -26,6 +26,7 @@ public class OrderItem {
 
     public void setOrder(Order order) {
         this.order = order;
+        order.getOrderItems().add(this);
     }
     public void cancel() {
         this.getItem().addStock(count);

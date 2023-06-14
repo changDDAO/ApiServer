@@ -17,6 +17,11 @@ import java.util.List;
 public class OrderService {
     private final OrderRepository orderRepository;
 
+    public Long saveOrder(Order order) {
+        Order save = orderRepository.save(order);
+        return save.getId();
+    }
+
     public Long order(Member member, Item item, int count) {
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
         Order order = Order.createOrder(member, orderItem);

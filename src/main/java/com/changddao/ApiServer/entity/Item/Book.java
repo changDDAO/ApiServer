@@ -17,5 +17,6 @@ public class Book extends Item {
     public Book(String author, int page) {
         this.author = author;
         this.page = page;
+
     }
 }

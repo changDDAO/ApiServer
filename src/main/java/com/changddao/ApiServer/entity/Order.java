@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name = "orders")
 public class Order extends BaseTimeEntity{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="order_id")
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -28,16 +29,13 @@ public class Order extends BaseTimeEntity{
         this.member = member;
         member.getOrders().add(this);
     }
-    public void addOrderItem(OrderItem orderItem) {
-        orderItems.add(orderItem);
-        orderItem.setOrder(this);
-    }
 
     public static Order createOrder(Member member, OrderItem... orderItems) {
         Order order = new Order();
         order.setMember(member);
         for (OrderItem orderItem : orderItems) {
             order.orderItems.add(orderItem);
+            orderItem.setOrder(order);
         }
         order.orderStatus=OrderStatus.ORDER;
         return order;
