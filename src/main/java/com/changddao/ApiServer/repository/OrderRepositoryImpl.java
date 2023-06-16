@@ -22,7 +22,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom{
     @Override
     public List<Order> ordersWithMember() {
         List<Order> result = queryFactory.selectFrom(order)
-                .leftJoin(member).fetchJoin()
+                .leftJoin(order.member,member).fetchJoin()
                 .fetch();
         return result;
     }
