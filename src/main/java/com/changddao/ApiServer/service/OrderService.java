@@ -38,4 +38,9 @@ public class OrderService {
         return orders;
     }
 
+    public List<Order> ordersWithMember() {
+        List<Order> orders = orderRepository.ordersWithMember();
+        return orders;
+    }
+
 }
