@@ -21,6 +21,9 @@ public class OrderApiController {
     @Data
     static class OrderQueryDto{
         private String memberName;
+        private String productName;
+        private int count;
+        private int orderPrice;
         private List<OrderItem> orderItems;
     }
 }
