@@ -17,13 +17,14 @@ import java.util.stream.Collectors;
 public class OrderApiController {
     private final OrderService orderService;
    @GetMapping("/api/v2/orders")
-    public List<OrderFetchedDto> ordersV2() {
+    public Result ordersV2() {
        List<Order> orders = orderService.ordersWithMember();
        List<OrderFetchedDto> collect = orders.stream().map(order -> new OrderFetchedDto(order))
                .collect(Collectors.toList());
-       return collect;
+       return new Result(collect);
    }
-
+// dto 반환 시 Wrapper class로 감싸서 반환하자 List로 반환 시 효율성 떨어짐,  한뷰에는 여러 dto가 보내질 수 있기에
+    //감싸서 해결하자
     @GetMapping("/api/v3/orders")
     public List<OrderFetchedDto> ordersV3() {
         List<Order> orders = orderService.ordersWithItem();
