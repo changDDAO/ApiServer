@@ -8,5 +8,7 @@ import java.util.List;
 public interface OrderRepositoryCustom {
     public List<Order> ordersWithMember();
 
+    public List<Order> findOrdersWithItem();
+
 
 }

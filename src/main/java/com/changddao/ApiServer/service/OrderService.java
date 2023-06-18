@@ -43,4 +43,9 @@ public class OrderService {
         return orders;
     }
 
+    public List<Order> ordersWithItem() {
+        List<Order> orders = orderRepository.findOrdersWithItem();
+        return orders;
+    }
+
 }

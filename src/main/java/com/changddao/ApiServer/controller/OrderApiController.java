@@ -23,6 +23,14 @@ public class OrderApiController {
                .collect(Collectors.toList());
        return collect;
    }
+
+    @GetMapping("/api/v3/orders")
+    public List<OrderFetchedDto> ordersV3() {
+        List<Order> orders = orderService.ordersWithItem();
+        List<OrderFetchedDto> collect = orders.stream().map(order -> new OrderFetchedDto(order))
+                .collect(Collectors.toList());
+        return collect;
+    }
     @Data
     private class OrderFetchedDto{
        String username;
